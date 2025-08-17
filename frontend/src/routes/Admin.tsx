@@ -47,7 +47,7 @@ export default function Admin() {
     setLoading(true)
     const { error } = await supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: `${window.location.origin}/admin` }
+      options: { emailRedirectTo: `${window.location.origin}${import.meta.env.BASE_URL}admin` }
     })
     setLoading(false)
     if (error) alert(error.message)
