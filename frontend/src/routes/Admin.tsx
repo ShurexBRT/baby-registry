@@ -2,9 +2,26 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import { useItems, useCreateItem, useDeleteItem } from '../lib/queries'
 
+const CATEGORIES = [
+  'General',
+  'Odeća',
+  'Ishrana',
+  'Higijena',
+  'Kupanje',
+  'Šetnja',
+  'Spavanje',
+  'Soba',
+  'Zdravlje',
+  'Igračke',
+  'Pelene & presvlačenje',
+  'Dojenje & flašice',
+  'Kupovina/market',
+] as const;
+
+
 export default function Admin() {
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')        // 👈 dodato
+  const [password, setPassword] = useState('')        
   const [session, setSession] = useState<any>(null)
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null)
   const [loading, setLoading] = useState(false)
@@ -108,8 +125,7 @@ export default function Admin() {
     <div className="max-w-3xl mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold">Admin panel</h2>
-        <button onClick={() => supabase.auth.signOut()} className="underline">Odjavi se</button>
-      </div>
+            </div>
 
       <AddForm onCreate={(payload) => createItem.mutate(payload)} />
 
@@ -147,7 +163,16 @@ function AddForm({ onCreate }: { onCreate: (p:any)=>void }) {
       <div className="font-medium">Dodaj stavku</div>
       <div className="grid sm:grid-cols-2 gap-2">
         <input className="border rounded-xl px-3 py-2" placeholder="Naziv *" value={title} onChange={e=>setTitle(e.target.value)} />
-        <input className="border rounded-xl px-3 py-2" placeholder="Kategorija" value={category} onChange={e=>setCategory(e.target.value)} />
+        <select
+  className="border rounded-xl px-3 py-2"
+  value={category}
+  onChange={(e) => setCategory(e.target.value)}
+>
+  {CATEGORIES.map((c) => (
+    <option key={c} value={c}>{c}</option>
+  ))}
+</select>
+
         <input type="number" className="border rounded-xl px-3 py-2" placeholder="Količina" value={quantity} onChange={e=>setQuantity(parseInt(e.target.value||'1'))} />
         <input className="border rounded-xl px-3 py-2" placeholder="Jedinica" value={unit} onChange={e=>setUnit(e.target.value)} />
         <input type="number" step="0.01" className="border rounded-xl px-3 py-2" placeholder="Cena (EUR)" value={price} onChange={e=>setPrice(e.target.value===''?'':parseFloat(e.target.value))} />

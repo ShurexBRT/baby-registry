@@ -46,12 +46,7 @@ export default function Home() {
           <option value="reserved">Rezervisano</option>
           <option value="purchased">Kupljeno</option>
         </select>
-        <button
-          onClick={() => { navigator.clipboard?.writeText(window.location.href) }}
-          className="px-3 py-2 rounded-xl border"
-        >
-          Copy link
-        </button>
+        
       </div>
 
       {/* Ime + komentar */}

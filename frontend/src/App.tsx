@@ -11,8 +11,8 @@ export default function App() {
       <div className="min-h-dvh">
         <div className="max-w-3xl mx-auto p-4">
           <header className="py-4 flex items-center justify-between">
-            <h1 className="text-2xl font-bold">Baby Registry</h1>
-            <Link to="/admin" className="text-sm underline">Admin</Link>
+            <h1 className="text-2xl font-bold">Strajina Shoping Lista</h1>
+            
           </header>
           <Home />
         </div>
