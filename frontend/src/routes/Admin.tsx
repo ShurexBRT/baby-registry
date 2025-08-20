@@ -175,7 +175,7 @@ function AddForm({ onCreate }: { onCreate: (p:any)=>void }) {
 
         <input type="number" className="border rounded-xl px-3 py-2" placeholder="Količina" value={quantity} onChange={e=>setQuantity(parseInt(e.target.value||'1'))} />
         <input className="border rounded-xl px-3 py-2" placeholder="Jedinica" value={unit} onChange={e=>setUnit(e.target.value)} />
-        <input type="number" step="0.01" className="border rounded-xl px-3 py-2" placeholder="Cena (EUR)" value={price} onChange={e=>setPrice(e.target.value===''?'':parseFloat(e.target.value))} />
+        <input type="number" step="0.01" className="border rounded-xl px-3 py-2" placeholder="Cena" value={price} onChange={e=>setPrice(e.target.value===''?'':parseFloat(e.target.value))} />
         <input className="border rounded-xl px-3 py-2" placeholder="Link ka prodavnici" value={store} onChange={e=>setStore(e.target.value)} />
         <select className="border rounded-xl px-3 py-2" value={priority} onChange={e=>setPriority(e.target.value as any)}>
           <option value="high">High</option>
