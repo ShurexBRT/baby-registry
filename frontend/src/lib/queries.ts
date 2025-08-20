@@ -14,6 +14,7 @@ export type Item = {
   priority: 'high' | 'med' | 'low'
   status: 'available' | 'reserved' | 'purchased'
   reserved_by?: string
+  reserved_note?: string   //Dodavanje komentara prilikom rezervacije
   reserved_at?: string
   purchased_by?: string
   purchased_at?: string
