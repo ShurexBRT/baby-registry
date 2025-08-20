@@ -9,7 +9,7 @@ import Login from './routes/Login'
 import Account from './routes/Account'
 import ResetPassword from './routes/ResetPassword'
 import Signup from './routes/Signup'
-
+import Header from './components/Header'
 import './styles/index.css'
 
 // SW uz BASE_URL
@@ -27,6 +27,7 @@ function Root() {
   return (
     <QueryClientProvider client={qc}>
       <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <Header />  
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/admin" element={<Admin />} />
